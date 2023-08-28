@@ -2,16 +2,16 @@ import { Box, Typography, useTheme } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 import { mockDataTeam } from "../../data/mockData";
+import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
+import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
+import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined";
 import EditIcon from "@mui/icons-material/Edit";
-import DeleteIcon from "@mui/icons-material/Delete";
-import SettingsIcon from "@mui/icons-material/Settings";
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import DeleteIcon from '@mui/icons-material/Delete';
 import Header from "../../components/Header";
 
 const Team = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-
   const columns = [
     { field: "id", headerName: "ID" },
     {
@@ -24,31 +24,31 @@ const Team = () => {
       field: "description",
       headerName: "Description",
       type: "string",
-      flex: 1,
-    },
-    {
-      field: "rate",
-      headerName: "Rate",
-      type: "number",
       headerAlign: "left",
       align: "left",
     },
     {
+      field: "rate",
+      headerName: "Rate",
+      flex: 1,
+    },
+    {
       field: "balance",
       headerName: "Balance",
+      flex: 1,
     },
     {
       field: "deposit",
       headerName: "Deposit",
-    },
-
-    {
-      field: "access",
-      headerName: "Access Level",
       flex: 1,
-      renderCell: ({ row: { access } }) => {
+    },
+    {
+      field: "status",
+      headerName: "Status",
+      flex: 1,
+      renderCell: ({ row: { active } }) => {
         return (
-          <Box
+            <Box
             display="flex"
             alignItems="center"
             sx={{
@@ -58,22 +58,25 @@ const Team = () => {
               },
             }}
           >
+
+          
+
             <Box
-              width="100px"
+              width="60%"
               m="0 auto"
               p="5px"
               display="flex"
               justifyContent="center"
-              alignItems="center"
               backgroundColor={
-                access === "Active" ? colors.greenAccent[600] : undefined
+                active === "Active" ? colors.greenAccent[600] : undefined
               }
               borderRadius="10px"
             >
               <Typography color={colors.grey[100]} sx={{ ml: "5px" }}>
-                {access}
+                {active}
               </Typography>
             </Box>
+
 
             <Box
               width="35px"
@@ -92,7 +95,6 @@ const Team = () => {
             >
               <EditIcon />
             </Box>
-
             <Box
               width="35px"
               height="35px"
@@ -110,18 +112,8 @@ const Team = () => {
             >
               <DeleteIcon />
             </Box>
-          </Box>
-        );
-      },
-    },
-    {
-      field: "setting",
-      headerName: <SettingsIcon />,
-      renderCell: () => {
-        return (
-          <Box>
-            <MoreHorizIcon />
-          </Box>
+
+            </Box>
         );
       },
     },
@@ -144,15 +136,15 @@ const Team = () => {
             color: colors.greenAccent[300],
           },
           "& .MuiDataGrid-columnHeaders": {
-            backgroundColor: "#000000",
+            backgroundColor: colors.blueAccent[700],
             borderBottom: "none",
           },
           "& .MuiDataGrid-virtualScroller": {
-            backgroundColor: "#000000",
+            backgroundColor: colors.primary[400],
           },
           "& .MuiDataGrid-footerContainer": {
             borderTop: "none",
-            backgroundColor: "#000000",
+            backgroundColor: colors.blueAccent[700],
           },
           "& .MuiCheckbox-root": {
             color: `${colors.greenAccent[200]} !important`,

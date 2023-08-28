@@ -4,8 +4,8 @@ import { tokens } from "../../theme";
 import { mockDataTeam } from "../../data/mockData";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import SettingsIcon from "@mui/icons-material/Settings";
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import SettingsIcon from '@mui/icons-material/Settings';
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import Header from "../../components/Header";
 
 const Team = () => {
@@ -24,7 +24,7 @@ const Team = () => {
       field: "description",
       headerName: "Description",
       type: "string",
-      flex: 1,
+      flex:1,
     },
     {
       field: "rate",
@@ -41,7 +41,7 @@ const Team = () => {
       field: "deposit",
       headerName: "Deposit",
     },
-
+    
     {
       field: "access",
       headerName: "Access Level",
@@ -65,11 +65,16 @@ const Team = () => {
               display="flex"
               justifyContent="center"
               alignItems="center"
+              
+
               backgroundColor={
-                access === "Active" ? colors.greenAccent[600] : undefined
+                access === "Active"
+                  ? colors.greenAccent[600]
+                  : undefined
               }
               borderRadius="10px"
             >
+              
               <Typography color={colors.grey[100]} sx={{ ml: "5px" }}>
                 {access}
               </Typography>
@@ -93,6 +98,7 @@ const Team = () => {
               <EditIcon />
             </Box>
 
+
             <Box
               width="35px"
               height="35px"
@@ -110,20 +116,20 @@ const Team = () => {
             >
               <DeleteIcon />
             </Box>
+
+
           </Box>
         );
       },
     },
     {
       field: "setting",
-      headerName: <SettingsIcon />,
-      renderCell: () => {
-        return (
-          <Box>
-            <MoreHorizIcon />
-          </Box>
-        );
-      },
+      headerName: <SettingsIcon/>,
+      renderCell: ()=>{
+        return(
+          <MoreHorizIcon/>
+        )
+      }
     },
   ];
 
